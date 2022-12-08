@@ -8,9 +8,7 @@ class GameTest {
     Game game = new Game();
     Player player1 = new Player(1, "Peter", 100);
     Player player2 = new Player(2, "Ben", 150);
-    Player player3 = new Player(3,"Kate", 100);
-
-
+    Player player3 = new Player(3, "Kate", 100);
 
 
     @Test
@@ -19,10 +17,11 @@ class GameTest {
         game.register(player2);
 
         int expected = 2;
-        int actual = game.round("Peter","Ben");
+        int actual = game.round("Peter", "Ben");
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void SecondPlayerStronger() {
         game.register(player2);
@@ -33,19 +32,20 @@ class GameTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void strengthEqual() {
         game.register(player1);
         game.register(player3);
 
         int expected = 0;
-        int actual = game.round("Peter","Kate");
+        int actual = game.round("Peter", "Kate");
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void notRegisteredFirstPlayer () {
+    public void notRegisteredFirstPlayer() {
 
         game.register(player1);
 
@@ -53,8 +53,9 @@ class GameTest {
         Assertions.assertThrows(NotRegisteredException.class,
                 () -> game.round("Ben", "Peter"));
     }
+
     @Test
-    public void notRegisteredSecondPlayer () {
+    public void notRegisteredSecondPlayer() {
 
         game.register(player2);
 
